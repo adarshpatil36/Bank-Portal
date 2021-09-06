@@ -1,0 +1,16 @@
+button {
+  background-color: #126bc5;
+  color: white;
+  border-radius: 12px;
+  border: 0px;
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #126bc5;
+  padding: 50px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: xx-large;
+}
