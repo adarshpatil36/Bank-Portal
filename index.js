@@ -1,4 +1,5 @@
 "use strict";
+
 var transactionData = [
   {
     R_ACCOUNTTRANSACTION: "Sell to Close",
@@ -75,8 +76,11 @@ var transactionData = [
 ];
 
 var transactionType;
+var selectedFilterType;
 // var transactionData = null;
 window.onload = () => {
+  document.getElementById("formData").innerHTML = window.location.search;
+
   const url =
     "https://binubuo.p.rapidapi.com/generator/finance/account_transaction?rows=30";
   const options = {
@@ -117,7 +121,7 @@ window.onload = () => {
     const obj = JSON.parse(JSON.stringify(item));
 
     const date = randomDate(new Date(2020, 0, 1), new Date());
-    const id = Date.now();
+    const id = Math.floor(Math.random() * 1000000);
     transactionData[index] = { id: id, date: date, ...obj };
     uniqueTransactionType.add(item["R_ACCOUNTTRANSACTION"]);
   });
@@ -136,16 +140,41 @@ window.onload = () => {
   }
 };
 
+const filterData = (ele) => {
+  selectedFilterType = ele.value;
+};
+
+const search = () => {
+  let res;
+  if (selectedFilterType === "All") res = transactionData;
+  else {
+    res = transactionData.filter(
+      (item) =>
+        item.R_ACCOUNTTRANSACTION === transactionType[selectedFilterType]
+    );
+  }
+  renderTabularData(res);
+  console.log(">>> ", res);
+};
+
 const randomDate = (start, end) =>
   new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 
-const filterData = (ele) => {
-  let res;
-  if (ele.value === "All") res = transactionData;
-  else {
-    res = transactionData.filter(
-      (item) => item.R_ACCOUNTTRANSACTION === transactionType[ele.value]
-    );
-  }
-  console.log(">>> ", res);
+const renderTabularData = (data) => {
+  const ele = document.getElementById("transactionDetails");
+  let tableData =
+    "<table><tr><th>Transaction Date</th><th>Transaction Type</th><th>Transaction Amount</th</tr>";
+  Object.values(data).forEach((item) => {
+    tableData =
+      tableData +
+      "<tr><td>" +
+      item["date"].toLocaleDateString() +
+      "</td><td>" +
+      item["R_ACCOUNTTRANSACTION"] +
+      "</td><td>" +
+      item["amount"] +
+      "</td></tr>";
+  });
+  tableData += "</td></table>";
+  ele.innerHTML = tableData;
 };

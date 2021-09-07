@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Banking Portal</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
     <header>
-      <div class="title">Welcome to Jarvis Bank</div>
+      <div class="container">
+        <div class="title">Welcome to Jarvis Bank</div>
+        <div class="card p-3">
+          <div class="d-flex align-items-center">
+            <div class="image">
+              <img
+                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                class="rounded" width="155" />
+            </div>
+            <div class="ml-3 w-100 name">
+              <span>Alex Morrision</span>
+              <p>Login Location:</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
-    <!-- <button onclick="handleClickListener()">
-      Click here to get transaction details...!!!
-    </button> -->
 
-    <div id="transactionDetails" />
+    <div class="content">
+      <div class="subTitle">Credit Card Transactions Details</div>
+      <div>
+        <select id="filter" onchange="filterData(this)">
+          <option value="All">All Transactions</option>
+        </select>
+        <button onclick="search()">Search</button>
+      </div>
 
-    <!-- <form name="filterTransactionDetails">
-      <label>Select date from:</label>
-      <input type="date" id="filterDate" />
+      <div id="transactionDetails" />
 
-      <button onclick="filterData()"></button>
-      <input type="submit" onclick="filterData()" />
-    </form> -->
-
-    <!-- <p>Account activity</p>
-
-    <form name="filter">
-      <label>Showing</label>
-      <input type="date" id="filterData" />
-      <button onclick="filterData()"></button>
-      <input type="submit" onclick="filterData()" />
-    </form> -->
-    <select id="filter" onchange="filterData(this)">
-      <option value="All">All Transactions</option>
-    </select>
-    <button>Search</button>
+    </div>
+    <div id='formData'></div>
     <footer></footer>
 
     <script src="index.js"></script>
     <noscript>Sorry your browser doesn't support JavaScript</noscript>
   </body>
+
 </html>

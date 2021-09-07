@@ -1,16 +1,120 @@
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  height: 100%;
+}
 button {
   background-color: #126bc5;
   color: white;
   border-radius: 12px;
   border: 0px;
+  max-width: fit-content;
+  padding: 8px;
+  margin: 0px 0px 20px 15px;
 }
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 20px 0px 30px 0px;
   background-color: #126bc5;
-  padding: 50px;
   color: white;
-  font-family: "Open Sans", sans-serif;
+}
+.subTitle {
+  color: #126bc5;
+  background-color: white;
+  font-size: x-large;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+}
+
+#filter {
+  width: auto;
+  height: 35px;
+  border: 2px solid #126bc5;
+  border-radius: 7px;
+  font-size: large;
+}
+
+footer {
+  background-color: #128842;
+  padding: 40px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.card {
+  width: 400px;
+  min-width: 300px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.name {
+  color: black;
+  padding-left: 15px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #d6eeee;
+}
+
+input {
+  height: 32px;
+  padding-left: 14px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.loginForm {
+  width: 40%;
+}
+.signUpForm {
+  width: 32%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border: 2px solid;
+  padding: 30px;
+  border-radius: 25px;
+}
+
+form > * {
+  margin: 6px;
+}
+.title {
+  width: 30%;
   font-size: xx-large;
+}
+span {
+  font-size: x-large;
+}
+
+label {
+  margin-bottom: 0px;
 }
