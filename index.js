@@ -1,5 +1,14 @@
 "use strict";
 
+const CONSTANTS = {
+  API_HOST: "binubuo.p.rapidapi.com",
+  API_KEY: "1f3eaaf7a7msh1d36133d9087be8p15f32ajsn2913fc18b847",
+  FILTER_TYPE: {
+    ALL: "All",
+  },
+  R_ACCOUNTTRANSACTION: "R_ACCOUNTTRANSACTION",
+};
+
 var transactionData = [
   {
     R_ACCOUNTTRANSACTION: "Sell to Close",
@@ -76,18 +85,36 @@ var transactionData = [
 ];
 
 var transactionType;
-var selectedFilterType;
+var selectedFilterType = CONSTANTS.FILTER_TYPE.ALL;
 // var transactionData = null;
 window.onload = () => {
-  document.getElementById("formData").innerHTML = window.location.search;
+  let url;
+  document.getElementById("userName").innerHTML =
+    localStorage.getItem("loggedInUser");
 
-  const url =
+  navigator.geolocation.getCurrentPosition((position) => {
+    url =
+      "https://us1.locationiq.com/v1/reverse.php?key=pk.6202b2b9b4c51cce665354eed017a565&lat=" +
+      position.coords.latitude +
+      "&lon=" +
+      position.coords.longitude;
+
+    fetch(url)
+      .then((response) => response.text())
+      .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
+      .then((data) => {
+        document.getElementById("loginLocation").innerHTML =
+          data.getElementsByTagName("result")[0].childNodes[0].nodeValue;
+      });
+  });
+
+  url =
     "https://binubuo.p.rapidapi.com/generator/finance/account_transaction?rows=30";
   const options = {
     headers: {
       authorization: "undefined",
-      "x-rapidapi-host": "binubuo.p.rapidapi.com",
-      "x-rapidapi-key": "1f3eaaf7a7msh1d36133d9087be8p15f32ajsn2913fc18b847",
+      "x-rapidapi-host": CONSTANTS.API_HOST,
+      "x-rapidapi-key": CONSTANTS.API_KEY,
     },
   };
 
@@ -99,7 +126,7 @@ window.onload = () => {
   //   .then((data) => {
   //     console.log(">> ", data);
   //     transactionData = data.filter((item) =>
-  //       item.hasOwnProperty("R_ACCOUNTTRANSACTION")
+  //       typeof(item) === 'object' && item.hasOwnProperty("R_ACCOUNTTRANSACTION")
   //     );
   //     transactionData.map((item) => (item["amount"] = Math.random() * 1000));
 
@@ -112,7 +139,7 @@ window.onload = () => {
   //   });
 
   transactionData = transactionData.filter((item) =>
-    item.hasOwnProperty("R_ACCOUNTTRANSACTION")
+    item.hasOwnProperty(CONSTANTS.R_ACCOUNTTRANSACTION)
   );
   transactionData.map((item) => (item["amount"] = Math.random() * 1000));
 
@@ -123,7 +150,7 @@ window.onload = () => {
     const date = randomDate(new Date(2020, 0, 1), new Date());
     const id = Math.floor(Math.random() * 1000000);
     transactionData[index] = { id: id, date: date, ...obj };
-    uniqueTransactionType.add(item["R_ACCOUNTTRANSACTION"]);
+    uniqueTransactionType.add(item[CONSTANTS.R_ACCOUNTTRANSACTION]);
   });
 
   transactionType = Array.from(uniqueTransactionType);
@@ -146,7 +173,7 @@ const filterData = (ele) => {
 
 const search = () => {
   let res;
-  if (selectedFilterType === "All") res = transactionData;
+  if (selectedFilterType === CONSTANTS.FILTER_TYPE.ALL) res = transactionData;
   else {
     res = transactionData.filter(
       (item) =>
@@ -170,7 +197,7 @@ const renderTabularData = (data) => {
       "<tr><td>" +
       item["date"].toLocaleDateString() +
       "</td><td>" +
-      item["R_ACCOUNTTRANSACTION"] +
+      item[CONSTANTS.R_ACCOUNTTRANSACTION] +
       "</td><td>" +
       item["amount"] +
       "</td></tr>";
