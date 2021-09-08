@@ -10,12 +10,19 @@
   </head>
 
   <body class='container '>
-    <form class='loginForm' action='index.html' method="GET">
+    <form class='loginForm' action='#' method="GET" onsubmit="return login(this)">
+      <p class="signUpTitle">Login</p>
       <label>User Name:</label>
       <input type='text' placeholder="User Name" name="UserName" required></input>
       <label>Password:</label>
       <input type='password' placeholder="Password" name="Password" required></input>
-      <button onclick="loginSubmit()">Login In</button>
+      <div>
+        <button type="submit">Login In</button>
+        <div class="signUpButton">
+          <p>Don't have an account?</p>
+          <button onclick="redirectToSignUp()">SignUp</button>
+        </div>
+      </div>
     </form>
   </body>
   <script src="login.js"></script>

@@ -3,6 +3,7 @@
 const CONSTANTS = {
   API_HOST: "binubuo.p.rapidapi.com",
   API_KEY: "1f3eaaf7a7msh1d36133d9087be8p15f32ajsn2913fc18b847",
+  AUTHORIZATION_VALUE: "undefined",
   FILTER_TYPE: {
     ALL: "All",
   },
@@ -112,7 +113,7 @@ window.onload = () => {
     "https://binubuo.p.rapidapi.com/generator/finance/account_transaction?rows=30";
   const options = {
     headers: {
-      authorization: "undefined",
+      authorization: CONSTANTS.AUTHORIZATION_VALUE,
       "x-rapidapi-host": CONSTANTS.API_HOST,
       "x-rapidapi-key": CONSTANTS.API_KEY,
     },

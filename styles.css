@@ -42,7 +42,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 58%;
+  min-height: 59%;
 }
 
 #filter {
@@ -56,7 +56,7 @@ header {
 footer {
   background-color: #128842;
   padding: 20px;
-  /* position: relative; */
+  position: fixed;
   bottom: 0px;
   /* width: 100%; */
   font-size: 10px;
@@ -75,8 +75,8 @@ footer {
   line-height: normal;
 }
 table {
-  border-collapse: collapse;
-  width: 100%;
+  /* border-collapse: collapse;
+  width: 100%; */
 }
 
 th,
@@ -95,18 +95,39 @@ input {
   padding-left: 14px;
 }
 
-.container {
+.headerContent {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+.signUpButton {
+  align-items: center;
+  display: flex;
+}
+
+.signUpButton p {
+  padding-right: 10px;
+}
+
+.loginForm div {
+  display: flex;
+  justify-content: space-between;
+}
 
 .loginForm {
-  width: 40%;
+  width: 30%;
 }
 .signUpForm {
   width: 32%;
 }
+.signUpTitle {
+  font: small-caps bold 32px arial, sans-serif;
+  color: #126bc5;
+}
+.conditionMessage {
+  font-size: 10px;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -135,7 +156,8 @@ label {
   font-size: x-small;
 }
 #errorMessage {
-  visibility: hidden;
+  display: none;
+  /* visibility: hidden; */
   padding: 6px;
 }
 p {
