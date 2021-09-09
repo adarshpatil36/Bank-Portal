@@ -1,5 +1,16 @@
 "use strict";
 
+const userDataBase = [
+  {
+    uname: "Adarsh",
+    password: "Qwerty@123",
+  },
+  {
+    uname: "Jarvis",
+    password: "Jarvis@123",
+  },
+];
+
 const CONSTANTS = {
   PASSWORD_MISMATCH: "Password Mismatch",
   LOGGEDINUSER: "loggedInUser",

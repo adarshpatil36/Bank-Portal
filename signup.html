@@ -19,10 +19,13 @@
     <form class='signUpForm' action='#' method="GET" onsubmit="return signUp(this);">
       <p class="signUpTitle"> Sign-Up for Jarvis</p>
       <label>First Name:</label>
-      <input type='text' placeholder="First Name" name="firstname" required></input>
+      <input type='text' placeholder="First Name" name="firstname" required autofocus></input>
 
       <label>Last Name:</label>
       <input type='text' placeholder="Last Name" name="lastname" required></input>
+
+      <label>User Name:</label>
+      <input type='text' placeholder="User Name" name="uname" required></input>
 
       <label>Email Id:</label>
       <input type='email' placeholder="user@email.com" name="email" required

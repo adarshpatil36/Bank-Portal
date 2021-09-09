@@ -10,87 +10,14 @@ const CONSTANTS = {
   R_ACCOUNTTRANSACTION: "R_ACCOUNTTRANSACTION",
 };
 
-var transactionData = [
-  {
-    R_ACCOUNTTRANSACTION: "Sell to Close",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Cap. Distribution",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Deposit",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Check",
-  },
-  {},
-  {},
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Sell to Close",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Buy",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Transfer",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Interest",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Cap. Gains long",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Deposit",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Buy",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Move",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Online",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Sell",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Charge",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Interest",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Withdrawal",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Cap. Gains Short",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Dividend",
-  },
-  {
-    R_ACCOUNTTRANSACTION: "Sell",
-  },
-  {},
-  {
-    R_ACCOUNTTRANSACTION: "Sell to Close",
-  },
-];
+var transactionData = JSON.parse(
+  '[{"R_ACCOUNTTRANSACTION":"Sell to Close"},{},{"R_ACCOUNTTRANSACTION":"Cap. Distribution"},{},{"R_ACCOUNTTRANSACTION":"Deposit"},{},{"R_ACCOUNTTRANSACTION":"Check"},{},{},{},{"R_ACCOUNTTRANSACTION":"Sell to Close"},{},{"R_ACCOUNTTRANSACTION":"Buy"},{"R_ACCOUNTTRANSACTION":"Transfer"},{"R_ACCOUNTTRANSACTION":"Interest"},{"R_ACCOUNTTRANSACTION":"Cap. Gains long"},{"R_ACCOUNTTRANSACTION":"Deposit"},{"R_ACCOUNTTRANSACTION":"Buy"},{"R_ACCOUNTTRANSACTION":"Move"},{"R_ACCOUNTTRANSACTION":"Online"},{"R_ACCOUNTTRANSACTION":"Sell"},{"R_ACCOUNTTRANSACTION":"Charge"},{"R_ACCOUNTTRANSACTION":"Interest"},{"R_ACCOUNTTRANSACTION":"Withdrawal"},{"R_ACCOUNTTRANSACTION":"Cap. Gains Short"},{},{"R_ACCOUNTTRANSACTION":"Dividend"},{"R_ACCOUNTTRANSACTION":"Sell"},{},{"R_ACCOUNTTRANSACTION":"Sell to Close"}]'
+);
 
 var transactionType;
 var selectedFilterType = CONSTANTS.FILTER_TYPE.ALL;
-// var transactionData = null;
 window.onload = () => {
   let url;
-
   document.getElementById("userName").innerHTML =
     localStorage.getItem("loggedInUser");
 
@@ -121,24 +48,6 @@ window.onload = () => {
   };
 
   let uniqueTransactionType = new Set();
-
-  /** Need to add preflight api call as per api documentation  */
-  // fetch(url, options)
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(">> ", data);
-  //     transactionData = data.filter((item) =>
-  //       typeof(item) === 'object' && item.hasOwnProperty("R_ACCOUNTTRANSACTION")
-  //     );
-  //     transactionData.map((item) => (item["amount"] = Math.random() * 1000));
-
-  //     const rootDiv = document.getElementById("transactionDetails");
-
-  //     rootDiv.append(document.createElement(''))
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
 
   transactionData = transactionData.filter((item) =>
     item.hasOwnProperty(CONSTANTS.R_ACCOUNTTRANSACTION)
@@ -185,7 +94,7 @@ const search = () => {
   renderTabularData(res);
 };
 
-const randomDate = (start, end) =>
+const randomDate = (start, end = new Date()) =>
   new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 
 const renderTabularData = (data) => {
