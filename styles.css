@@ -20,7 +20,7 @@ button {
 #filterCard {
   align-items: center;
   display: flex;
-  width: 355px;
+  width: 28%;
 }
 
 #search {
@@ -34,7 +34,7 @@ header {
 .subTitle {
   color: #126bc5;
   background-color: white;
-  font-size: x-large;
+  font-size: 35px;
   padding: 20px;
 }
 
@@ -74,6 +74,9 @@ footer {
   padding-left: 15px;
   line-height: normal;
 }
+.name p {
+  margin: 0px;
+}
 table {
   /* border-collapse: collapse;
   width: 100%; */
@@ -98,7 +101,7 @@ input {
 .headerContent {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .signUpButton {
   align-items: center;
@@ -109,6 +112,16 @@ input {
   padding-right: 10px;
 }
 
+.subHeader {
+  display: flex;
+}
+.logout {
+  padding: 32px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
 .loginForm div {
   display: flex;
   justify-content: space-between;
@@ -141,8 +154,9 @@ form > * {
   margin: 6px;
 }
 .title {
-  width: 30%;
-  font-size: xx-large;
+  width: 50%;
+  font-size: 60px;
+  padding-left: 120px;
 }
 #userName {
   padding-bottom: 11px;
@@ -160,6 +174,6 @@ label {
   /* visibility: hidden; */
   padding: 6px;
 }
-p {
+/* p {
   margin: 0px;
-}
+} */

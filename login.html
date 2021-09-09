@@ -11,11 +11,13 @@
 
   <body class='container '>
     <form class='loginForm' action='#' method="GET" onsubmit="return login(this)">
-      <p class="signUpTitle">Login</p>
+      <p class="signUpTitle">Login to Jarvis</p>
       <label>User Name:</label>
       <input type='text' placeholder="User Name" name="UserName" required></input>
       <label>Password:</label>
-      <input type='password' placeholder="Password" name="Password" required></input>
+      <input type='password' placeholder="Password" name="Password" required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></input>
       <div>
         <button type="submit">Login In</button>
         <div class="signUpButton">
