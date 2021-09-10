@@ -44,15 +44,22 @@
         </header>
 
         <div class="content">
-            <div class="subTitle">Credit Card Transactions Details</div>
-            <div id='filterCard'>
-                <label>Filter by Transaction Type: </label>
-                <select id="filter" onchange="filterData(this)">
-                    <option value="All">All Transactions</option>
-                </select>
-                <button id='search' onclick="search()">Search</button>
+            <div class="subTitle accountTitle">
+                Account Balance
+                <div id='balance'></div>
             </div>
-            <div id="transactionDetails"></div>
+            <div class='transactionCard'>
+                <div class="subTitle">Credit Card Transactions Details</div>
+                <div id='filterCard'>
+                    <label>Filter by Transaction Type: </label>
+                    <select id="filter" onchange="filterData(this)">
+                        <option value="All">All Transactions</option>
+                    </select>
+                    <button id='search' onclick="search()">Search</button>
+                </div>
+                <div id="transactionDetails"></div>
+            </div>
+
         </div>
         <footer>
             <p>We strive to provide you with information about products and services you might find interesting and

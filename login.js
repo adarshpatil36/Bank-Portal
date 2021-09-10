@@ -14,6 +14,7 @@ const userDataBase = [
 const CONSTANTS = {
   PASSWORD_MISMATCH: "Password Mismatch",
   LOGGEDINUSER: "loggedInUser",
+  BALANCE: "balance",
 };
 
 const redirectToSignUp = () => {
@@ -21,7 +22,12 @@ const redirectToSignUp = () => {
 };
 
 const login = (theForm) => {
-  localStorage.setItem(CONSTANTS.LOGGEDINUSER, `${theForm[0].value}`);
+  sessionStorage.setItem(CONSTANTS.LOGGEDINUSER, `${theForm[0].value}`);
+  localStorage.setItem(
+    CONSTANTS.BALANCE,
+    Number.parseFloat(Math.random() * 100000).toFixed(2)
+  );
+
   window.location.href = "portal.html";
   return false;
 };
@@ -31,7 +37,7 @@ const signUp = (theForm) => {
   if (theForm[4].value === theForm[3].value) {
     ele.style.display = "none";
     window.location.href = "portal.html";
-    localStorage.setItem(CONSTANTS.LOGGEDINUSER, `${theForm[0].value}`);
+    sessionStorage.setItem(CONSTANTS.LOGGEDINUSER, `${theForm[0].value}`);
   } else {
     ele.style.display = "initial";
     ele.innerHTML = CONSTANTS.PASSWORD_MISMATCH;

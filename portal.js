@@ -19,7 +19,11 @@ var selectedFilterType = CONSTANTS.FILTER_TYPE.ALL;
 window.onload = () => {
   let url;
   document.getElementById("userName").innerHTML =
-    localStorage.getItem("loggedInUser");
+    sessionStorage.getItem("loggedInUser");
+
+  document.getElementById("balance").innerHTML = `$ ${localStorage.getItem(
+    "balance"
+  )}`;
 
   navigator.geolocation.getCurrentPosition((position) => {
     url =
@@ -118,6 +122,6 @@ const renderTabularData = (data) => {
 
 const logout = () => {
   console.log("User logged off succesfully");
-  localStorage.removeItem("loggedInUser");
+  sessionStorage.removeItem("loggedInUser");
   window.location.href = "login.html";
 };
